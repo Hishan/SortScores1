@@ -48,6 +48,14 @@ namespace SortScores
                 String[] filePath = path.Split('\\');
                 String[] filename = filePath[filePath.Length - 1].Split('.');
 
+                //Split the folder path
+                string filepath2 = path;
+                System.IO.FileInfo fileinfo = new System.IO.FileInfo(filepath2);
+                string foldername = fileinfo.Directory.Name;
+                // Determine the full path of the file just created.
+                string directoryPath = fileinfo.DirectoryName;
+                string newFile = directoryPath + "\\" + filename[0] + "-graded.txt";
+
                 //Sort by score then by fistname
                 IEnumerable<Person> query = p.OrderByDescending(person => person.score).ThenBy(person => person.firstName);
 
@@ -56,7 +64,9 @@ namespace SortScores
                 foreach (Person person in query)
                 {
                     Console.Write("\t" + person.firstName + ", " + person.lastName + ", " + person.score + "\n");
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(@filename[0]+"-graded.txt", true))
+                    // A new - graded file is created under the same folder that your original file is located
+                    //Console.WriteLine(newFile);
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(newFile, true))
                     {
                         file.WriteLine(person.firstName + ", " + person.lastName + ", " + person.score);
                     }
