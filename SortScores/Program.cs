@@ -18,19 +18,29 @@ namespace SortScores
 
             // Read each line of the file into a string array. Each element
             // of the array is one line of the file.
-            string[] lines = System.IO.File.ReadAllLines("scores.txt");
-            int x = 1;
-            
-
-            //System.Console.WriteLine(sourcePath);
-
+            String[] lines = System.IO.File.ReadAllLines("scores.txt");
+            Person[] p = new Person[lines.Length];
+            int personIndex = 0;
             // Display the file contents by using a foreach loop.
             System.Console.WriteLine("Contents of scores.txt = ");
-            foreach (string line in lines)
+            foreach (String line in lines)
             {
-                // Use a tab to indent each line of the file.
-                Console.WriteLine("\t" + line);
+                foreach (Person person in p) {
+                    string[] parts = line.Split(',');
+                    for (int i = 0; i < parts.Length; i++)
+                    { //remove all the space characters in the line and get each word stored again in the same variable
+                        parts[i] = parts[i].Trim();//trims all the trailing and leading white characters of a line
+                        //Console.Write(parts[i] + "\n");
+                    }
+                   p[personIndex] = new Person(parts[0], parts[1], Int32.Parse(parts[2]));
+                }
+                personIndex++;
             }
+
+            foreach (Person person in p) {
+                Console.Write("\t" + person.firstName + ", " + person.lastName + ", " + person.score+"\n");
+            }
+
             // Keep the console window open in debug mode.
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
