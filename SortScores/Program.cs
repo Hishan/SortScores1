@@ -11,11 +11,13 @@ namespace SortScores
         {
             Console.WriteLine("Hello World!");
             //string sourcePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            // Example #2
+
             // Read each line of the file into a string array. Each element
             // of the array is one line of the file.
             string[] lines = System.IO.File.ReadAllLines("scores.txt");
+
             //System.Console.WriteLine(sourcePath);
+
             // Display the file contents by using a foreach loop.
             System.Console.WriteLine("Contents of scores.txt = ");
             foreach (string line in lines)
