@@ -1,5 +1,5 @@
 ﻿/*Transmax Assignment 
- Hishan de Silva for the Graduate Position 
+ Hishan de Silva for the Graduate Program Position 
  */
 
 using System;
@@ -78,7 +78,7 @@ namespace SortScores
                 Console.WriteLine("\n\nCannot open the file in the path you have entered\n Is the path valid?\n Exception raised - " + ex.Message);
                 Console.WriteLine("Press any key to exit.");
                 Console.ReadKey();
-            }
+            } 
         }
     }
 }
