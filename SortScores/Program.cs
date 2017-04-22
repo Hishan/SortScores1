@@ -15,6 +15,7 @@ namespace SortScores
             // Read each line of the file into a string array. Each element
             // of the array is one line of the file.
             string[] lines = System.IO.File.ReadAllLines("scores.txt");
+            int c = 1;
 
             //System.Console.WriteLine(sourcePath);
 
