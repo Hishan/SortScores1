@@ -1,5 +1,5 @@
 ﻿/*Transmax Assignment 
- Hishan de Silva
+ Hishan de Silva for the Graduate Position
  */
 
 using System;
