@@ -13,7 +13,7 @@ namespace SortScores
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello Transmax!");
             //string sourcePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
 
             // Read each line of the file into a string array. Each element
@@ -32,7 +32,7 @@ namespace SortScores
                         parts[i] = parts[i].Trim();//trims all the trailing and leading white characters of a line
                         //Console.Write(parts[i] + "\n");
                     }
-                   p[personIndex] = new Person(parts[0], parts[1], Int32.Parse(parts[2]));
+                    p[personIndex] = new Person(parts[0], parts[1], Int32.Parse(parts[2]));
                 }
                 personIndex++;
             }
@@ -41,6 +41,18 @@ namespace SortScores
                 Console.Write("\t" + person.firstName + ", " + person.lastName + ", " + person.score+"\n");
             }
 
+            //Sort by score then by fistname
+            IEnumerable<Person> query = p.OrderByDescending(person => person.score).ThenBy(person => person.firstName);
+
+            Console.WriteLine("Contents of the sortedScores.txt =");
+
+            foreach (Person person in query) {
+                Console.Write("\t" + person.firstName + ", " + person.lastName + ", " + person.score + "\n");
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"SortedScores.txt", true))
+                {
+                    file.WriteLine(person.firstName + ", " + person.lastName + ", " + person.score);
+                }
+            }
             // Keep the console window open in debug mode.
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
