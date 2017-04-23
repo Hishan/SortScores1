@@ -22,7 +22,8 @@ namespace SortScores.Tests
         public void setFirstNameTest()
         {
             Person p = new Person("hishan", "de silva", 99);
-            if (p.setFirstName("krishan")) {
+            if (p.setFirstName("krishan"))
+            {
             }
             else
                 Assert.Fail("First Name is not set.");
