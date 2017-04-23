@@ -79,7 +79,7 @@ namespace SortScores
                             }
                         }
                         //Restart or Not the application to do another sort
-                        Console.WriteLine("Do you want to re-start [y/n]?");
+                        Console.WriteLine("\nDo you want to re-start [y/n]?");
                         String yes = Console.ReadLine();
                         switch (yes)
                         {
