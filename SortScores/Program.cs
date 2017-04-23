@@ -34,14 +34,14 @@ namespace SortScores
                         { //remove all the space characters in the line and get each word stored again in the same variable
                             parts[i] = parts[i].Trim();//trims all the trailing and leading white characters of a line
                         }
-                        p[personIndex] = new Person(parts[0], parts[1], Int32.Parse(parts[2]));
+                        p[personIndex] = new Person(parts[0], parts[1], float.Parse(parts[2]));
                     }
                     personIndex++;
                 }
 
                 foreach (Person person in p)
                 {
-                    Console.Write("\t" + person.firstName + ", " + person.lastName + ", " + person.score + "\n");
+                    Console.Write("\t" + person.getFirstName() + ", " + person.getLastName() + ", " + person.getScore() + "\n");
                 }
 
                 //Extracting the file name to generate the new file name from the path entered.
@@ -57,18 +57,18 @@ namespace SortScores
                 string newFile = directoryPath + "\\" + filename[0] + "-graded.txt";
 
                 //Sort by score then by fistname
-                IEnumerable<Person> query = p.OrderByDescending(person => person.score).ThenBy(person => person.firstName);
+                IEnumerable<Person> query = p.OrderByDescending(person => person.getScore()).ThenBy(person => person.getFirstName());
 
                 Console.WriteLine("Contents of the sortedScores.txt =");
 
                 foreach (Person person in query)
                 {
-                    Console.Write("\t" + person.firstName + ", " + person.lastName + ", " + person.score + "\n");
+                    Console.Write("\t" + person.getFirstName() + ", " + person.getLastName() + ", " + person.getScore() + "\n");
                     // A new - graded file is created under the same folder that your original file is located
                     //Console.WriteLine(newFile);
                     using (System.IO.StreamWriter file = new System.IO.StreamWriter(newFile, true))
                     {
-                        file.WriteLine(person.firstName + ", " + person.lastName + ", " + person.score);
+                        file.WriteLine(person.getFirstName() + ", " + person.getLastName() + ", " + person.getScore());
                     }
                 }
                 // Keep the console window open in debug mode.
